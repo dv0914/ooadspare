@@ -1,29 +1,49 @@
 package com.example.hotel.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "admins")
 public class Admin {
-    private int id;
-    private String username;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int adminId;
+
+    private String name;
+
+    @Column(unique = true)
+    private String email;
+
     private String password;
 
-    // --- Getters and Setters ---
-    public int getId() {
-        return id;
+    // --- Getters ---
+    public int getAdminId() {
+        return adminId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getName() {
+        return name;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+    public String getEmail() {
+        return email;
     }
 
     public String getPassword() {
         return password;
+    }
+
+    // --- Setters ---
+    public void setAdminId(int adminId) {
+        this.adminId = adminId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setPassword(String password) {

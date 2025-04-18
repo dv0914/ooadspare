@@ -30,7 +30,12 @@ CREATE TABLE properties (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (host_id) REFERENCES hosts(host_id) ON DELETE CASCADE
 );
-
+CREATE TABLE payments (
+    payment_id INT PRIMARY KEY AUTO_INCREMENT,
+    guest_id INT NOT NULL,
+    property_id INT NOT NULL,
+    payment_type ENUM('UPI','DEBIT CARD','CREDIT CARD')
+)
 -- BOOKINGS (Made by GUESTS)
 CREATE TABLE bookings (
     booking_id INT PRIMARY KEY AUTO_INCREMENT,
